@@ -23,6 +23,9 @@ html {
     color: var(--body-font-color);
     scroll-behavior: smooth;
 }
+body{
+    overflow-x: hidden;
+}
 section {
     padding: 3.9rem 0;
 }
@@ -148,6 +151,9 @@ header {
     font-weight: 100;
     line-height: .4;
     letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeup .5s forwards;
+    animation-delay: .5s;
 }
 .first-letter{
     text-transform: uppercase;
@@ -161,6 +167,7 @@ header {
     font-weight: 900;
     letter-spacing: .5rem;
     margin-right: .5rem;
+    animation: scale .5s forwards;
 }
 .separator{
     display: flex;
@@ -173,6 +180,9 @@ header {
     height: .25rem;
     background-color: #fff;
     position: relative;
+    opacity: 0;
+    animation: grow 2s forwards;
+    animation-delay:.9s ;
 }
 
 .line-right::before,
@@ -182,20 +192,32 @@ header {
     top: 50%;
     transform: translateY(-50%);
     border: .6rem solid transparent;
+    opacity: 0;
+    animation: grow .5s forwards;
+    animation-delay:1.2s ;
 }
 .line-left::before{
     border-right-color: #fff;
-    left: 0;
+    left: -100%;
 }
 .line-right::before{
     border-left-color: #fff;
-    right: 0;
+    right: -100%;
 }
 
 .asterisk{
     font-size: 1.2rem;
     color: var(--secondary-font-color);
     margin: 0 1.6rem;
+    opacity: 0;
+    animation: spin 5s forwards;
+    animation-delay:.7s ;
+}
+
+.single-animation{
+    opacity: 0;
+    animation: fadedown .5s forwards;
+    animation-delay: 1.5s;
 }
 .headline-description{
     color: #fff;
@@ -325,15 +347,17 @@ footer{
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50%;
+
 }
 .back-to-top i{
     display: block;
     color: #fff;
     font-size: 2rem;
     padding: 2rem;
+    animation:  up 2s infinite;
 }
 .footer-content{
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .footer-content h4{
     font-size: 1.9rem;
@@ -362,7 +386,7 @@ footer{
 .social-icons i{
     font-size: 2rem;
     color: #fff;
-    padding: 8rem 2rem;
+    padding: 1rem 2rem;
     opacity: .5;
     transition: color .5s;
 }
@@ -400,6 +424,7 @@ footer{
 @media screen and (min-width:900px){
     section{
         padding: 7.9rem;
+        overflow: hidden;
     }
     .menu-toggle{
         display: none;
@@ -434,6 +459,122 @@ footer{
     .active::before{
         content: '';
         position: absolute;
-        
+        width: 100%;
+        height: 2px;
+        background-color:#fff;
+        left: 0;
+        bottom: -3px;
+    }
+    .sub-headline{
+        font-size: 10rem;
+    }
+    .first-letter{
+        font-size: 12.2rem;
+    }
+    .headline{
+        font-size: 4.7rem;
+        letter-spacing: .8rem;
+    }
+    .line{
+        max-width: 11.4rem;
+    }
+    .restaurant-info{
+        display: flex;
+        align-items: center;
+    }
+    .restaurant-info >div{
+        flex: 1;
+    }
+    .padding-right{
+        padding-right: 7rem;
+    }
+    .footer-content{
+        max-width: 77.5rem;
+        margin: auto;
+    }
+    .footer-content-about{
+        max-width: 51.3rem;
+        margin: 0 auto 5.4rem;
+    }
+    .footer-content-divider{
+        display: flex;
+        justify-content: space-between;
+    }
+    .social-media,
+    .newsletter-form{
+        width: 100%;
+        max-width: 27.3rem;
+        margin: 0 1rem;
+    }
+    .social-icons i{
+        opacity: 1;
+    }
+    .newsletter-btn{
+        margin-left: 7.5rem;
     }
 }
+
+
+/* Animations */
+@keyframes fadeup{
+    0%{
+        transform: translateY(4rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes scale{
+    0%{
+        transform: scale(2);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes grow{
+    0%{
+       width: 0;
+    }
+    100%{
+        opacity: 1;
+       width: 100%;
+    }
+}
+
+@keyframes spin{
+    0%{
+       transform: rotate(0);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes fadedown{
+    0%{
+        transform: translateY(-1rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes up{
+    0%{
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+}
+
